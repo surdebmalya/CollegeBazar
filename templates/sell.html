@@ -1,63 +1,187 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>College Bazar Wishlist</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <style>
+        .main {
+            display: flex;
+            flex-wrap: nowrap;
+        }
 
-    <title>College Bazar</title>
+        .sidebar {
+            background: linear-gradient(90deg, #aab2f7 11%, rgb(255, 255, 255) 100%, #929cf0 100%);
+            /* background: linear-gradient(-135deg, #f9f5f9, #aab2f7); */
+        }
+
+        .btn-search {
+            border-color: #fa6eb4;
+            color: #fa6eb4;
+            background-color: white;
+        }
+
+            .btn-search:hover {
+                color: white;
+                background-color: #fa6eb4;
+            }
+
+        .active1 {
+            background-color: #8690e8;
+        }
+    </style>
 </head>
-
 <body>
 
-    <h1>Sell Your Product on College Bazar</h1>
+    <div>
+        <nav class="navbar navbar-expand-lg " style="background-color: #808bf4;">
+            <div class="container-fluid">
+                <img width="50px" height="50px" style="border-radius: 50%;" src="https://i.ibb.co/cg5dZZX/logo.jpg">
+                <a class="navbar-brand" href="#" style="color: white; padding-left: 10px;">College Bazar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#"></a>
+                        </li>
+                    </ul>
 
-    <!-- Selling the products -->
-    <form id="post-upload-product-form" method="post" action="createProduct" enctype=multipart/form-data>
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="name">Name of the product</label>
-            <input type="name" class="form-control" id="name" name="name" aria-describedby="name" required>
-        </div>
-        <div class="form-group">
-            <label for="fileuploader">Upload the picture</label>
-            <input type="file" class="form-control-file" id="fileuploader" name="fileuploader" required>
-        </div>
-        <div class="form-group">
-            <label for="text">Price</label>
-            <input type="number" class="form-control" id="price" name="price" required>
-        </div>
-        <div class="form-group">
-            <label for="textArea">Description</label>
-            <textarea class="form-control" id="textArea" name="textArea" rows="3" required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="selection">Category</label>
-            <select class="form-control" id="selection" name="selection">
-                <option>Bedding</option>
-                <option>Daily Essentials</option>
-                <option>Drinks</option>
-                <option>Electronics Goods</option>
-                <option>Foods</option>
-                <option>Furniture</option>
-                <option>Study Essentials</option>
-                <option>Stationary Products</option>
-                <option>Toiletry</option>
-                <option>Vehicles</option>
-                <option>Others</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Upload the Item</button>
-    </form>
+                    <form class="d-flex" role="search" style="margin-left: 845px;" method="post" action="search">
+                        {% csrf_token %}
+                        <input class="form-control me-2" id="search" name="search" type="search" placeholder="Search" aria-label="Search">
+                        <button style="margin-left: 15px;" class="btn btn-search" type="submit">Search</button>
+                    </form>
 
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="main">
+
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white sidebar" style="width: 280px; height:770px;">
+
+            <img style="margin-left: 20px; padding-left: 10px;" height="150px" width="175px" class="rounded" src="https://i.ibb.co/JCBTn6Y/img-01.png">
+            <span style="padding-top: 10px; padding-left: 30px;">{{name}}</span>
+
+            <br>
+
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="/" class="nav-link" style="color:black">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="/wishlists" class="nav-link " style="color:black">
+                        My Wishlist
+                    </a>
+                </li>
+                <li>
+                    <a href="/categories" class="nav-link" style="color:black">
+                        Categories
+                    </a>
+                </li>
+                <li>
+                    <a href="/sell" class="nav-link " style="color:black">
+                        Sell my product
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a style="color:black" class="nav-link" href="/myProducts">My Products</a>
+                </li>
+                <li>
+                    <a href="/allChats" class="nav-link" style="color:black">
+                        My Chats
+                    </a>
+                </li>
+                <li>
+                    <a href="/logout" class="nav-link" style="color:black">
+                        Log Out
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container mainbar">
+
+            <div class="p-3 rounded-3" style="margin-top: 2px; background: linear-gradient(225deg, #ccd0fa 11%, rgb(255, 255, 255) 100%, #929cf0 100%);;">
+                <div class="container-fluid py-5">
+                    <h1 class="display-5 fw-bold" style="font-size: 70px; color: #3949f8;">Time to Sell!!!</h1>
+                    <p class="col-md-8 fs-4" style="font-family: serif; font-size: 20px; color: #3949f8;">Sell your products to your juniors to avail products for them at some resonable cost</p>
+                </div>
+            </div>
+
+
+
+            <form class="row g-3" method="post" action="createProduct" enctype=multipart/form-data>
+                {% csrf_token %}
+                <div class="col-md-6 my-2">
+                    <label class="form-label" style="font-family: serif; font-size: 20px; color: #3949f8;">Product Name</label>
+                    <input type="text" class="form-control" id="name" name="name" style="border-color: #929cf0;" required>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <label class="form-label" style="font-family: serif; font-size: 20px; color: #3949f8;">Price</label>
+                    <input type="number" class="form-control" id="price" name="price" required style="border-color: #929cf0;">
+                </div>
+
+                <div class="col-12 my-3">
+                    <label class="form-label" style="font-family: serif; font-size: 20px; color: #3949f8;">Description</label>
+                    <textarea class="form-control" id="textArea" name="textArea" required rows="3" style="border-color: #929cf0;"></textarea>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label" style="font-family: serif; font-size: 20px; color: #3949f8;">Category</label><br>
+                    <select class="form-select" id="selection" name="selection" required style="border-color: #929cf0;">
+
+                        <option value="Bedding">Bedding</option>
+                        <option value="DailyEssentials">Daily Essentials</option>
+                        <option value="Drinks">Drinks</option>
+                        <option value="ElectronicGoods">Electronic Goods</option>
+                        <option value="Foods">Foods</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="StudyEssentials">Study Essentials</option>
+                        <option value="StationaryProducts">Stationary Products</option>
+                        <option value="Toilery">Toilery</option>
+                        <option value="Vehicles">Vehicles</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" style="font-family: serif; font-size: 20px; color: #3949f8;">Upload Image</label><br>
+                    <input type="file" id="fileuploader" name="fileuploader" required style="border-color: #929cf0;">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary my-4">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <div class="container-fluid" style="background-color: #808bf4;">
+        <footer class="py-2 ">
+            <p class="text-center" style="color: white;padding-top: 10px;">© 2022 College Bazar</p>
+        </footer>
+    </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
 </body>
-
 </html>

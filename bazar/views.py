@@ -9,7 +9,7 @@ from django.http import JsonResponse, HttpResponse
 
 def home(request):
     try:
-        if(request.session['name']):
+      if(request.session['name']):
             items = list(ITEMS.objects.filter().values())
             return render(request, 'home.html', {'msg': items, 'name': request.session['name'], 'number': len(items)})
     except:
@@ -18,6 +18,7 @@ def home(request):
 def login(request):
     try:
         if(request.session['name']):
+            print('I am here')
             return redirect('home')
     except:
         return render(request, 'login.html')
@@ -208,7 +209,7 @@ def search(request):
                 all_items.append(temp)
 
             # getting the fuzzy search result
-            threshold = 30
+            threshold = 20
             result = luceneFuzzySearchPercentage(all_items, keyword, threshold)
             return_items = []
             for i in result:

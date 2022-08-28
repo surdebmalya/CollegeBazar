@@ -1,0 +1,1 @@
+web gunicorn collegebazar.wsgi:application --log-file -

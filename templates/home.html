@@ -12,7 +12,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Profile_Pic</a>
+        <a class="navbar-brand" href="/">{{name}}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,18 +45,21 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/sell">Sell My Product</a>
+                    <a class="nav-link" href="/sell">Sell Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/chats">My Chats</a>
+                    <a class="nav-link" href="/myProducts">My Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/allChats">My Chats</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout" style="color: red">Logout</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" method="post" action="filter">
+            <form class="form-inline my-2 my-lg-0" method="post" action="search">
                 {% csrf_token %}
-                <input class="form-control mr-sm-2" type="search" placeholder="Search Product" aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" id="search" name="search" placeholder="Search Product" aria-label="Search" required>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -65,6 +68,9 @@
     <h1>College Bazar</h1>
 
     <!-- Redering the products -->
+    {% if number == 0 %}
+    No Items exists
+    {% else %}
     <div class="row row-cols-1 row-cols-md-4">
         {% for item in msg %}
         <form id="details-form" method="post" action="getDetails">
@@ -87,6 +93,7 @@
         </form>
         {% endfor %}
     </div>
+    {% endif %}
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

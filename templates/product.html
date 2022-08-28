@@ -1,60 +1,193 @@
-<!doctype html>
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Product Card</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <style>
+        .product_category,
+        .product_price,
+        .btn {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            font-weight: 700;
+        }
 
-    <title>College Bazar</title>
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: -apple-system, ".SFNSText-Regular", "Helvetica Neue", sans-serif;
+            line-height: 1.5;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F0F0F0;
+        }
+
+        img {
+            max-width: 100%;
+
+            vertical-align: top;
+        }
+
+        hr {
+            border: 0;
+            height: 3px;
+            width: 30px;
+            background-color: #cf092c;
+            margin: 22px 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        p {
+            margin: 0 0 1.5em 0;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            color: #fff;
+            text-align: center;
+            padding: 1.75em 3.5em;
+            white-space: nowrap;
+            border-radius: 5px;
+        }
+
+        .product {
+            position: relative;
+            width: 400px;
+            padding: 40px;
+            border-radius: 8px;
+            background-color: #fff;
+            transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 30px 25px -20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product__image {
+            width: 75%;
+            margin-left: 50px;
+            margin-top: -5px;
+            margin-bottom: 30px;
+            max-width: none;
+        }
+
+        .product__title {
+            font-size: 30px;
+            color: #000;
+            margin: 0 0 0.5em 0;
+            line-height: 1.1;
+        }
+
+        .product__price {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -30px;
+            left: -30px;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: #fff;
+            border-radius: 50%;
+        }
+
+        .product__category {
+            display: block;
+            color: #cf092c;
+            margin-bottom: 1em;
+        }
+
+        .product_wishlist {
+            position: absolute;
+            top: -30px;
+            right: 30px;
+            background-color: #929cf0;
+            transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 30px 25px -20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product__btn {
+            position: absolute;
+            bottom: -30px;
+            left: 30px;
+            background-color: #929cf0;
+            transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 30px 25px -20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product__btn:hover {
+            box-shadow: 0 36px 28px -20px rgba(0, 0, 0, 0.2);
+            background-color: #4e5ff5;
+        }
+
+        .product_wishlist:hover {
+            box-shadow: 0 36px 28px -20px rgba(0, 0, 0, 0.2);
+            background-color: #4e5ff5;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
 </head>
 
 <body>
-    <h1>{{result.name}}</h1>
-
-    <!-- Redering the products -->
-    <img src={{result.imageURL}}>
-    <p>
-        {{result.description}}
-    </p>
-    <p>
-        Price: {{result.price}}
-    </p>
-    <p>
-        {% if result.status == '0' %}
-        Status: Under Review
-        {% elif result.status == '1' %}
-        Status: Approved
+    <!-- partial:index.partial.html -->
+    <div class="product">
+        <span class="product__price">Rs. {{result.price}}</span>
+        <img class="product__image" src={{result.imageURL}}>
+        <h1 class="product__title">{{result.name}}</h1>
+        <hr />
+        <p>{{result.description}}</p>
+        <p>
+            {% if result.status == '0' %}
+            Status: Under Review
+            {% else %}
+            Status: Verified
+            {% endif %}
+        </p>
+        {% if sellerid == buyerid %}
+        <b>This product is selling by you. So you can't add it to the wishlist!</b>
         {% else %}
-        Status: Rejected
+        <form method="post" action="addToWishlist">
+            {% csrf_token %}
+            <input type="hidden" name="userid" id="userid" value="{{result.userid}}">
+            <input type="hidden" name="productid" id="productid" value="{{result.id}}">
+            {% if flag == 0 %}
+            <button type="submit" class="product_wishlist btn">Add to Wishlist</button>
+            {% endif %}
+        </form>
+        <form method="post" action="chat">
+            {% csrf_token %}
+            <input type="hidden" name="sellerid" id="sellerid" value="{{sellerid}}">
+            <button type="submit" class="product__btn btn">Chat with the Seller</button>
+        </form>
         {% endif %}
-    </p>
-    <p>
-    <form method="post" action="addToWishlist">
-        {% csrf_token %}
-        <input type="hidden" name="userid" id="userid" value="{{result.userid}}">
-        <input type="hidden" name="productid" id="productid" value="{{result.id}}">
-        {% if flag == 0 %}
-        <button type="submit" class="btn btn-primary">Add to Wishlist</button>
-        {% endif %}
-    </form>
-    </p>
-    <p>
-    <form method="post" action="chats">
-        <input type="hidden" name="chat" id="chat" value="{{result.userid}}">
-        <button type="submit" class="btn btn-primary">Chat with the Seller</button>
-    </form>
-    </p>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-
-
+    </div>
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </body>
 
 </html>

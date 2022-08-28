@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
 <head>
@@ -116,3 +117,123 @@
             crossorigin="anonymous"></script>
 </body>
 </html>
+=======
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>College Bazar Home</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<body>
+    <style>
+        .divider:after,
+        .divider:before {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+
+        .h-custom {
+            height: calc(100% - 73px);
+        }
+
+        @media (max-width: 450px) {
+            .h-custom {
+                height: 100%;
+            }
+        }
+
+        body {
+            background: linear-gradient(180deg, #aab2f7 11%, rgb(255, 255, 255) 100%, #929cf0 100%);
+        }
+    </style>
+    <div>
+        <nav class="navbar navbar-expand-lg " style="background-color: #808bf4;">
+            <div class="container-fluid">
+                <img width="50px" height="50px" style="border-radius: 50%;" src="https://i.ibb.co/cg5dZZX/logo.jpg">
+                <a class="navbar-brand" href="#" style="color: white; padding-left: 10px;">College Bazar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#"></a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://i.ibb.co/ncc4GyS/cart.png"
+                         class="img-fluid" alt="Sample image">
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" style="margin-left: -20px;">
+                    <h1 style="font-family: monospae; padding-left: 100px; padding-bottom: 50px; margin-top: -25px;">Member Sign Up</h1>
+                    <form method="post" action="accountCreation">
+                        {% csrf_token %}
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form3Example3" style="font-family: monospae; font-size: 20px;">Name</label>
+                            <input type="text" id="name" name="name" required class="form-control form-control-lg"
+                                   placeholder="Enter Name" />
+                        </div>
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form3Example3" style="font-family: monospae; font-size: 20px;">Email address</label>
+                            <input type="email" id="email" name="email" required class="form-control form-control-lg"
+                                   placeholder="Enter email address" />
+
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-3">
+                            <label class="form-label" for="form3Example4" style="font-family: monospae; font-size: 20px;">Password</label>
+                            <input type="password" id="password" name="password" class="form-control form-control-lg"
+                                   placeholder="Enter password" />
+
+                        </div>
+
+
+
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="submit" class="btn btn-primary btn-lg"
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                                Sign Up
+                            </button>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">
+                                Don't have an account? <a href="/login"
+                                                          class="link-danger">Login</a>
+                            </p>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="height: 10px;"></div>
+        <div class="container-fluid" style="background-color: #808bf4;">
+            <footer class="py-2 ">
+                <p class="text-center" style="color: white;padding-top: 10px;">© 2022 College Bazar</p>
+            </footer>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+</body>
+</html>
+>>>>>>> 4c1bb2373f8c255a3f906404d1da37e5aa827c3b

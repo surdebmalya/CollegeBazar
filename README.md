@@ -2,7 +2,7 @@
 
 This is an ecommerce project made specifically for students staying on hostel where seniors can sell their products to their juniors at cheaper price.
 
-Mainly the project is built on the python based framework django and some html,css
+Mainly the project is built on the python based framework django and some html,css.
 
 ## Guidelines to use
 

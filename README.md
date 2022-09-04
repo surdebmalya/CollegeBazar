@@ -1,4 +1,4 @@
-# College Bazar
+# Link: [College Bazar](https://college-bazar.surdebmalya11.repl.co/)
 
 Link: [Click Here](https://college-bazar.surdebmalya11.repl.co/)
 

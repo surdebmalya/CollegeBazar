@@ -4,6 +4,9 @@ This is an ecommerce project made specifically for students staying on hostel wh
 
 Mainly the project is built on the python based framework django and some html,css.
 
+## Features of the project
+- E-commerce website 
+
 ## Guidelines to use
 
 We have already created some users, you can check through their accounts or you can create your own account also.

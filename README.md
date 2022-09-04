@@ -6,7 +6,7 @@ Mainly the project is built on the python based framework django and some html,c
 
 ## Guidelines to use
 
-We have already created some users, you can check through their accounts or you can create your own account also
+We have already created some users, you can check through their accounts or you can create your own account also.
 
 ### Account 1
 - Email: raj@gmail.com

@@ -13,7 +13,7 @@ Mainly the project is built on the python based framework django and some html,c
 
 We have already created some users, you can check through their accounts or you can create your own account also.
 
-### Account 1
+<!--- ### Account 1
 - Email: raj@gmail.com
 - Password: 1234
 
@@ -23,7 +23,7 @@ We have already created some users, you can check through their accounts or you 
 
 ### Account 3
 - Email: abcd@gmail.com
-- Password: 123
+- Password: 123 --->
 
 ## Output
 

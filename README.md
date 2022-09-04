@@ -7,6 +7,7 @@ Mainly the project is built on the python based framework django and some html,c
 ## Features of the project
 - E-commerce website having all type of operations
 - Feature of adding new products as owner 
+- Buyers can see all the products and can sort according to price
 - Real time Chat with owner 
 
 ## Guidelines to use
